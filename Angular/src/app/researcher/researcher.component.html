@@ -1,0 +1,35 @@
+<nav class="navbar navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">IIT Bombay</span>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['./']" (click)="show()">Add Researcher</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['./resList']" (click)="showHide()">Researcher List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" (click)="logOut()">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<router-outlet></router-outlet>
+<div class="container border mt-5 mb-5" *ngIf="IsForm">
+  <h2>Add Researcher</h2>
+    <form [formGroup]="resForm" (ngSubmit)="PostResearcher(resForm.value)">
+        <input type="text" placeholder="Name" formControlName="resName" class="mt-3"><br>
+        <div *ngIf="resForm.get('resName').hasError('minlength')" class='alert alert-primary mt-2 mb-2'>
+           Please enter atleat 2-15 chars
+       </div>
+        <input type="email" placeholder="Email" formControlName="resEmail" class="mt-3"><br>
+        <div *ngIf="resForm.get('resEmail').hasError('minlength')" class='alert alert-primary mt-2 mb-2'>
+           Please enter atleat 2-15 chars
+       </div>
+        <input type="text" placeholder="Password" formControlName="password" class="mt-3 mb-3"><br>
+        <div *ngIf="resForm.get('password').hasError('minlength')" class='alert alert-primary mt-2 mb-2'>
+           Please enter atleat 2-15 chars
+       </div>
+        <button class="btn btn-primary" type="submit" [disabled]="resForm.invalid">Submit</button>
+    </form>
+</div>

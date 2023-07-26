@@ -1,0 +1,20 @@
+<div class="container border mt-5 mb-5">
+   <h2>Add Researcher</h2>
+   <form [formGroup]="resForm" (ngSubmit)="PostResearcher(resForm.value)">
+      
+      <input type="text" placeholder="Name" formControlName="resName" class="mt-3" [(ngModel)]="Researcher.resName"><br>
+      <div *ngIf="resForm.get('resName').hasError('minlength')" class='alert alert-primary mt-2 mb-2'>
+         Please enter atleat 2 chars
+     </div>
+      <input type="email" placeholder="Email" formControlName="resEmail" class="mt-3" [(ngModel)]="Researcher.resEmail"><br>
+      <div *ngIf="resForm.get('resEmail').hasError('minlength')" class='alert alert-primary mt-2 mb-2'>
+         Please enter atleat 2 chars
+     </div>
+      <input  type="password" placeholder="Password" formControlName="password" class="mt-3 mb-3" [(ngModel)]="Researcher.password"><br>
+      <div *ngIf="resForm.get('password').hasError('minlength')" class='alert alert-primary mt-2 mb-2'>
+         Please enter atleat 2 chars
+     </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!resForm.valid">Submit</button>
+   </form>
+</div>
+

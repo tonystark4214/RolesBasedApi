@@ -1,0 +1,18 @@
+<div class="container border mt-5 mb-5">
+    <h2>Add Professor</h2>
+    <form [formGroup]="profForm" (ngSubmit)="PostProfessor(profForm.value)">
+        <input type="text" placeholder="Name" formControlName="resName" class="mt-3"><br>
+        <div *ngIf="profForm.get('resName').hasError('minlength')" class='alert alert-primary mt-2 mb-2'>
+           Please enter atleat 2 chars
+       </div>
+        <input type="email" placeholder="Email" formControlName="resEmail" class="mt-3"><br>
+        <div *ngIf="profForm.get('resEmail').hasError('minlength')" class='alert alert-primary mt-2 mb-2'>
+           Please enter atleat 2 chars
+       </div>
+        <input type="text" placeholder="Password" formControlName="password" class="mt-3 mb-3"><br>
+        <div *ngIf="profForm.get('password').hasError('minlength')" class='alert alert-primary mt-2 mb-2'>
+           Please enter atleat 2 chars
+       </div>
+        <button class="btn btn-primary" type="submit" [disabled]="profForm.invalid">Submit</button>
+    </form>
+</div>

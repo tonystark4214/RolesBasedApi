@@ -1,0 +1,21 @@
+<div class="container border mt-5 mb-5" appHostDirective *ngIf="IsTable">
+    <table class="mt-3" style="width: 100%;">
+        <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr *ngFor="let el of ResearcherList; index as i;">
+            <td>{{i+1}}</td>
+            <td>{{el.resName}}</td>
+            <td>{{el.resEmail}}</td>
+            <td>{{el.resUserName}}</td>
+            <td><button type="button" (click)="Edit(el.resId)">Edit</button></td>
+            <td><button type="button" (click)="Delete(el.resId)">Delete</button></td>
+        </tr>
+    </table>
+</div>
+<app-add-res *ngIf="IsShow" [Researcher]="Researcher" [Id]="Id"></app-add-res>
